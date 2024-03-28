@@ -31,17 +31,20 @@ document.querySelector(".first").addEventListener("click", function (event) {
             } else {
                 result.push(values.get(foundchar));
                 values.set(charstoadd, mapsize++);
+                document.querySelector("#bodyOutput").innerHTML += `<tr><td>${values.get(foundchar)}</td></tr>`;
                 foundchar = input[i];
 
 
                 document.querySelector("#bodyWorking").innerHTML += `<tr><td>${charstoadd}</td><td>${a}</td></tr>`;
-                document.querySelector("#bodyOutput").innerHTML += `<tr><td>${values.get(foundchar)}</td></tr>`;
+                
                 a++;
             }
 
         }
         if (foundchar.length !== 0) {
             result.push(values.get(foundchar));
+            document.querySelector("#bodyOutput").innerHTML += `<tr><td>${values.get(foundchar)}</td></tr>`;
+
         }
         document.getElementById("string").value = "";
         input = "";
@@ -65,7 +68,7 @@ document.querySelector(".Second").addEventListener("click", step);
 
 function step() {
     console.log(counter);
-    if (counter == 0 || counter >= final1.length) {
+    if (counter == 0 || counter > final1.length) {
         counter = 0;
         final1 = [];
         final2 = [];
@@ -100,11 +103,12 @@ function step() {
                 } else {
                     result.push(values.get(foundchar));
                     values.set(charstoadd, mapsize++);
+                    final3[z] = values.get(foundchar);
                     foundchar = input[i];
 
                     final1[z] = charstoadd
                     final2[z] = a
-                    final3[z] = values.get(foundchar)
+                    
                     z++;
 
                     a++;
@@ -113,6 +117,8 @@ function step() {
             }
             if (foundchar.length !== 0) {
                 result.push(values.get(foundchar));
+                final3[z] = values.get(foundchar);
+
             }
             document.getElementById("string").value = "";
             input = "";
@@ -130,7 +136,11 @@ function step() {
         counter++;
 
     }
-    else if (counter >= final1.length) {
+    else if(counter = final1.length){
+        document.querySelector("#bodyOutput").innerHTML += `<tr><td>${final3[counter]}</td></tr>`;
+        counter++;
+    }
+    else if (counter > final1.length) {
         document.querySelector("#tableA").innerHTML = "";
         document.querySelector("#tableB").innerHTML = "";
         input = "";
