@@ -129,13 +129,19 @@ footer {
     }
   }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 765px) {
     button {
         width: 60px;
         height: 45px;
         margin-top: 5%;
+        
     }
     h2{
         font-size: medium;
+        
+
+    }
+    button,svg{
+        width: 70px;
     }
   }
